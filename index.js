@@ -20,15 +20,18 @@ async function main() {
         console.log("==================================");
         console.log(" LOCAL OLLAMA  AGENT");
         console.log("==================================");
+        console.log("If you want to exit then type exit or bye")
+        console.log("==================================");
 
         const model = currentModel();
-        console.log("model =", model);
+
         const isModelExist = await modelVerification(model);
         if (!isModelExist) {
             throw new Error(
                 `Model ${model} not found. Check ollama list.`
             );
         }
+
 
 
         while (true) {

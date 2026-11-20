@@ -7,7 +7,7 @@ import toolsExecutions from "../tools_Execution/toolsExecutions.js"
 export default async function ollamaAskAgent(userMessage, history) {
     const Model = currentModel();
     const allTool = allTools();
-    console.log("I am in aggentfile");
+
     const message = [{
         role: "user",
         content: userMessage
@@ -32,13 +32,13 @@ export default async function ollamaAskAgent(userMessage, history) {
         // }
 
         const processData = response.message;
-        console.log("data == ", processData);
+
 
         if (!processData?.tool_calls?.length) {
             return processData?.content || "";
         }
 
-        console.log("-----------Skip the return---------------");
+
         message.push(processData);
 
         for (const toolCalls of processData.tool_calls) {
